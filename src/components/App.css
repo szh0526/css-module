@@ -1,0 +1,13 @@
+.title {
+  color: red;
+}
+
+.content {
+  display: flex;
+}
+ 
+.img1{
+  background-image: url(../images/1.png);
+  height:500px;
+  width:500px;
+}
