@@ -4,8 +4,15 @@
   "description": "A collection of simple demos of CSS Modules",
   "main": "index.js",
   "scripts": {
-    "demo01": "webpack-dev-server --content-base src --watch --hot --inline --cache",
-    "pages": "bash build.sh",
+    "clean": "rimraf build/*",
+    "mock": "export DEBUG_WITH_MOCK=1 && npm start",
+    "debug_mock": "export DEBUG_WITH_MOCK=1 && devtool app.js --watch",
+    "debug": "devtool app.js --watch",
+    "pm2": "pm2 start pm2.json --env test",
+    "start": "node app",
+    "devserver": "webpack-dev-server --config webpack.config.js --watch --hot --inline --cache",
+    "server": "http-server -p 10000 dist/",
+    "lines": "find static -name \"*.js\" | xargs cat | wc -l",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

@@ -1,0 +1,56 @@
+$font-stack: Helvetica,
+sans-serif;
+$primary-color: blue;
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+.yellowBorder {
+    border: 5px solid yellow;
+}
+
+:global(.title) {
+    background-color: gray;
+}
+
+
+/* 定义多个全局样式 */
+
+:global {
+    .link {
+        color: green;
+    }
+    .box {
+        color: yellow;
+    }
+}
+
+.title {
+    composes: className from './Another.css';
+    composes: yellowBorder;
+    color: $primary-color;
+    display: flex;
+}
+
+.img1 {
+    background-image: url(../../../images/2.jpeg);
+    background-position: left top;
+    background-repeat: no-repeat;
+    width: 294px;
+    height: 249px;
+}
+
+.css_nano,
+[class*="css_nano"] {
+    /* cssnano will remove this comment */
+    display: flex;
+    font-weight: normal;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 2.5rem;
+    font-weight: normal;
+    padding: 1.75rem;
+    width: calc(50rem - (2 * 1.75rem));
+}

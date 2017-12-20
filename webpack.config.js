@@ -6,12 +6,29 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 process.env.NODE_ENV = "development";
 
 module.exports = {
+    devServer: {
+        historyApiFallback: false, //不跳转
+        headers: { 'Access-Control-Allow-Origin': "*" }, //解决dev-server服务css,js,jpeg等静态资源跨域问题
+        contentBase: 'static/build',
+        //控制台中不输出打包的信息 false打印
+        quiet: false,
+        // 不显示任何信息 false 显示
+        noInfo: false,
+        hot: true, //开启热点
+        inline: true, //开启页面自动刷新
+        lazy: false, //不启动懒加载
+        watchOptions: {
+            aggregateTimeout: 300
+        },
+        host: 'localhost',
+        port: 8080, //设置端口号
+    },
     entry: {
-        index: __dirname + '/src/index.js'
+        index: __dirname + '/static/src/index.js'
     },
     output: {
+        path: __dirname + "/static/build",
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist'),
         chunkFilename: '[name].[chunkFilename:8].js'
     },
     module: {
@@ -92,7 +109,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 8192,
-                    name: 'src/imgs/[name].[hash:8].[ext]'
+                    name: 'static/build/images/[name].[hash:8].[ext]'
                 }
             },
             {
@@ -100,10 +117,20 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     limit: 1000,
-                    name: 'src/fonts/[name].[hash:8].[ext]'
+                    name: 'static/build/fonts/[name].[hash:8].[ext]'
                 }
             }
         ]
+    },
+    resolve: {
+        extensions: ['*', '.web.js', '.mjs', '.js', '.json', '.css', '.less','.sass', '.web.jsx', '.jsx'],
+        alias: {
+            'iconfont': path.join(__dirname,"/static/src/fonts/iconfont.css"),
+            'appModuleJs': path.join(__dirname, '/static/src/components/modules/App/App.js'),
+            'appModuleCss': path.join(__dirname, '/static/src/components/modules/App/App.css'),
+            'appModuleScss': path.join(__dirname, '/static/src/components/modules/App/App.scss'),
+            'anotherModuleScss': path.join(__dirname, '/static/src/components/modules/App/Another.css'),
+        }
     },
     plugins: [
         new ExtractTextPlugin({

@@ -1,1 +1,12 @@
+# ignore packages installed by npm
+.DS_Store
 node_modules
+/.vscode
+logs/
+static/build/
+*.git
+*.svn
+npm-debug.log*
+*~
+# put any other files you don't want to check in here,
+# such as .DS_Store (OSX), *.bak, etc.
