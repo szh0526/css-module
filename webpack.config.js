@@ -4,10 +4,10 @@ const autoprefixer = require('autoprefixer'); //css兼容加前缀版本postcss
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-process.env.NODE_ENV = "development";
+//process.env.NODE_ENV = "development";
 
 module.exports = {
-    devtool: 'source-map',//开发模式cheap-module-eval-source-map
+    //devtool: 'cheap-module-eval-source-map',//生产模式source-map
     devServer: {
         historyApiFallback: false, //不跳转
         headers: { 'Access-Control-Allow-Origin': "*" }, //解决dev-server服务css,js,jpeg等静态资源跨域问题
@@ -27,13 +27,16 @@ module.exports = {
         port: 8080, //设置端口号
     },
     entry: {
-        index: __dirname + '/static/src/index.js'
+        index: __dirname + '/static/src/index.js',
+        index1: __dirname + '/static/src/index1.js',
+        index2: __dirname + '/static/src/index2.js',
+        vendor: ['lodash']
     },
     output: {
         path: path.join(__dirname,'static/build'),
         publicPath: "http://localhost:8080/",
         filename: '[name].js',
-        chunkFilename: '[name].[chunkFilename:8].js'
+        chunkFilename: '[name].js'
     },
     module: {
         rules: [{
@@ -128,7 +131,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.json', '.css','.sass', '.jsx'],
+        extensions: ['.js', '.json', '.css','.sass', '.jsx'],
         alias: {
             'iconfont': path.join(__dirname,"/static/src/fonts/iconfont.css"),
             'commonJs': path.join(__dirname, '/static/src/js/common/common.js'),
@@ -136,24 +139,32 @@ module.exports = {
             'appModuleCss': path.join(__dirname, '/static/src/components/modules/App/App.css'),
             'appModuleScss': path.join(__dirname, '/static/src/components/modules/App/App.scss'),
             'anotherModuleScss': path.join(__dirname, '/static/src/components/modules/App/Another.css'),
+            //import Utility from '../../utilities/utility'; 替换成 import Utility from 'Utilities/utility';
+            //Utilities: path.resolve(__dirname, 'src/utilities/'),
         }
     },
     plugins: [
-
         //new webpack.optimize.ModuleConcatenationPlugin()
         // new ExtractTextPlugin({
         //     filename:"[name].css",
         //     ignoreOrder:true,
-        //     allChunks: false //所有CSS文件合并成1个文件
+        //     allChunks: false //所有CSS文件合并成1个文件 不添加allChunks参数的话，不会抽离chunk的css
         // })
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+            //filename: "vendor.js"
+        }),
         new webpack.HotModuleReplacementPlugin(),
         //删除未引用代码
-        new UglifyJSPlugin({
-            sourceMap:true
-        }),
+        // new UglifyJSPlugin({
+        //     sourceMap:true,
+        //     compress: {
+        //         warnings: true
+        //     }
+        // }),
         new webpack.DefinePlugin({
             'process.env': {
-                'NODE_ENV': JSON.stringify('production')
+                'NODE_ENV': JSON.stringify('development')
             }
         })
     ]
