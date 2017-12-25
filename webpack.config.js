@@ -36,7 +36,7 @@ module.exports = {
         path: path.join(__dirname,'static/build'),
         publicPath: "http://localhost:8080/",
         filename: '[name].js',
-        chunkFilename: '[name].js'
+        chunkFilename: '[name].[hash].chunk.js'
     },
     module: {
         rules: [{
@@ -144,7 +144,7 @@ module.exports = {
         }
     },
     plugins: [
-        //new webpack.optimize.ModuleConcatenationPlugin()
+        new webpack.optimize.ModuleConcatenationPlugin(),
         // new ExtractTextPlugin({
         //     filename:"[name].css",
         //     ignoreOrder:true,
