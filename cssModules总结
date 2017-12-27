@@ -1,0 +1,55 @@
+//sass,less解决痛点 
+http://www.ruanyifeng.com/blog/2012/06/sass.html
+1.类命名
+2.命名空间
+3.文件结构
+4.变量
+5.计算功能
+6.嵌套
+7.继承
+
+//PostCss 解决痛点和特性
+https://segmentfault.com/a/1190000003909268
+https://www.ibm.com/developerworks/cn/web/1604-postcss-css/
+1.autoPrefixer浏览器自动添加兼容前缀插件
+2.nextCss使用Css4.0等css最新特性插件
+3.各种插件 嵌套,循环,继承,变量等特性
+
+//CSS in JS 痛点
+http://www.ruanyifeng.com/blog/2017/04/css_in_js.html
+驼峰式命名
+丢失了css得灵活性
+不能使用css预处理器sass,less,生态工具PostCss
+调试不方便，在 devtool 中修改只能修改当前的组件实例
+
+//CSS modules模块化
+http://www.ruanyifeng.com/blog/2016/06/css_modules.html
+解决的痛点
+1.全局命名空间
+2.按需加载
+3.css module只能应用在webpack
+4.规则少，使用简单
+5.生产环境,压缩时生成更短的class名,提高压缩率。
+
+使用技巧
+6.不使用选择器，只使用 class 名来定义样式
+7.不层叠多个 class，只使用一个 class 把所有样式定义好
+8.所有样式通过 composes 组合来实现复用
+9.不嵌套
+10.伪类等选择器不转换，原封不动的出现在编译后的css中。只会转换class名为base64随机码
+
+
+1.css modules，组件化：需要区分各个模块的级别（1.基础样式2.布局样式3.组件样式4.业务组件样式等文件结构和依赖关系）
+2.编写css modules demo 并搭建环境(编译,打包等)
+3.组件相关js,css是否跟合并的公共文件打包的一起
+4.实现按需加载 无关代码不打包webpack require.ensure
+5.Tree Shaking
+5.Lazy Loading
+6.Code Splitting
+7.结合webpack使用DllPlugin和DllReferencePlugin
+8.purecss精简css只能处理.html静态页面或单页app引用的css
+9.合并请求 淘宝
+
+//css modules Demo
+1.css编译: a.css 中导入base.css 编译后文件内容是什么 
+2.js编译：在js中如何引入或调用相关样式和组件 编译后css是否能够按需加载
