@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer'); //css兼容加前缀版本postcss
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 //process.env.NODE_ENV = "development";
 
@@ -31,8 +30,7 @@ module.exports = {
     entry: {
         //index: __dirname + '/static/src/index.js',
         "js/page/index1/index1": __dirname + '/static/src/index1.js',
-        "common/lodash": ['lodash'],
-        "common/dll": ['react', 'react-dom']
+        "vendor": ['react', 'react-dom', 'lodash']
     },
     output: {
         path: path.join(__dirname,'static/build'),
@@ -152,11 +150,15 @@ module.exports = {
         //     ignoreOrder:true,
         //     allChunks: false //所有CSS文件合并成1个文件 不添加allChunks参数的话，不会抽离chunk的css
         // })
+        
         new webpack.optimize.CommonsChunkPlugin({
-            name: ["chunk","vendor","dll"],
-            //minChunks是指一个文件至少被require几次才会被放到CommonChunk里，如果minChunks等于2，说明一个文件至少被require两次才能放在CommonChunk里
-            minChunks: 2
-            //filename: "vendor.js"
+            name: 'js/page/index1/index1',
+            minChunks: 2,
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            //filename: 'vendor.bundle.js',
+            minChunks: Infinity,
         }),
         new webpack.HotModuleReplacementPlugin(),
         //删除未引用代码

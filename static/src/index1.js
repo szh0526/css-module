@@ -1,5 +1,4 @@
-//import _ from 'lodash';
-//import math from './math';
+import _ from 'lodash';
 
 function component(){
     var element = document.createElement('div');
@@ -7,7 +6,7 @@ function component(){
     var br = document.createElement('br');
     button.innerHTML = 'Click me and look at the console!';
 
-    element.innerHTML = "hhhhh"; // _.join(['hello','chunk'],' ');
+    element.innerHTML = _.join(['hello','chunk'],' ');
     element.appendChild(br);
     element.appendChild(button);
 
@@ -28,7 +27,7 @@ function component1(){
     var br = document.createElement('br');
     button.innerHTML = 'Click me and look at the console!';
 
-    element.innerHTML = "bbbb"; //_.join(['hello','chunk1'],' ');
+    element.innerHTML = _.join(['hello','chunk1'],' ');
     element.appendChild(br);
     element.appendChild(button);
 

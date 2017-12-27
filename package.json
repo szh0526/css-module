@@ -4,22 +4,13 @@
   "description": "A collection of simple demos of CSS Modules",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf build/*",
-    "mock": "export DEBUG_WITH_MOCK=1 && npm start",
-    "debug_mock": "export DEBUG_WITH_MOCK=1 && devtool app.js --watch",
-    "debug": "devtool app.js --watch",
-    "pm2": "pm2 start pm2.json --env test",
-    "start": "node app",
-    "devserver": "webpack-dev-server --config webpack.config.js --watch --hot --inline --cache",
-    "server": "http-server -p 10000 dist/",
-    "lines": "find static -name \"*.js\" | xargs cat | wc -l",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf static/build/*",
+    "devserver": "webpack-dev-server --config webpack.config.js --watch --hot --inline --cache"
   },
   "keywords": [
-    "CSS",
-    "CSS Modules"
+    "css-modules-demos"
   ],
-  "author": "Ruan Yifeng",
+  "author": "zeehao.sun",
   "license": "ISC",
   "dependencies": {
     "react": "^15.1.0",
@@ -32,7 +23,6 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
-    "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
