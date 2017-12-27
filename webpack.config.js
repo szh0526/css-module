@@ -27,11 +27,12 @@ module.exports = {
         host: 'localhost',
         port: 8080, //设置端口号
     },
+    //将每个页面的入口文件放在对应的文件目录下,单独打包。避免重复或混杂代码
     entry: {
         //index: __dirname + '/static/src/index.js',
-        index1: __dirname + '/static/src/index1.js',
-        vendor: ['lodash'],
-        dll: ['react', 'react-dom']
+        "js/page/index1/index1": __dirname + '/static/src/index1.js',
+        "common/lodash": ['lodash'],
+        "common/dll": ['react', 'react-dom']
     },
     output: {
         path: path.join(__dirname,'static/build'),
