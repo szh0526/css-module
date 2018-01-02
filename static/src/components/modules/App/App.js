@@ -2,15 +2,13 @@ import React from 'react';
 import icon from 'iconfont';
 //import style1 from 'appModuleCss';
 import style from 'appModuleScss';
-import { cube } from 'commonJs';
 
 //多个className: https://www.npmjs.com/package/classnames 
 //<i className={`${icon.iconfont} ${icon["icon-edit"]}`} ></i>
 export default () => {
 
     const onClick = (e) =>{
-        debugger;
-        console.log(cube(5));
+        console.log("单击事件");
     }
 
     return (

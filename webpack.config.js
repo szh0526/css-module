@@ -28,7 +28,7 @@ module.exports = {
     },
     //将每个页面的入口文件放在对应的文件目录下,单独打包。避免重复或混杂代码
     entry: {
-        //index: __dirname + '/static/src/index.js',
+        "js/page/index/index": __dirname + '/static/src/index.js',
         "js/page/index1/index1": __dirname + '/static/src/index1.js',
         "vendor": ['react', 'react-dom', 'lodash']
     },
@@ -134,6 +134,7 @@ module.exports = {
         extensions: ['.js', '.json', '.css','.sass', '.jsx'],
         alias: {
             'iconfont': path.join(__dirname,"/static/src/fonts/iconfont.css"),
+            'styles': path.join(__dirname,"/static/src/styles.css"),
             'commonJs': path.join(__dirname, '/static/src/js/common/common.js'),
             'appModuleJs': path.join(__dirname, '/static/src/components/modules/App/App.js'),
             'appModuleCss': path.join(__dirname, '/static/src/components/modules/App/App.css'),
@@ -151,10 +152,10 @@ module.exports = {
         //     allChunks: false //所有CSS文件合并成1个文件 不添加allChunks参数的话，不会抽离chunk的css
         // })
         
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'js/page/index1/index1',
-            minChunks: 2,
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'js/page/index1/index1',
+        //     minChunks: 2,
+        // }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             //filename: 'vendor.bundle.js',
