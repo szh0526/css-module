@@ -8,9 +8,9 @@
     "devserver": "webpack-dev-server --config webpack.config.js --watch --hot --inline --cache"
   },
   "keywords": [
-    "css-modules-demos"
+    ""
   ],
-  "author": "zeehao.sun",
+  "author": "zehao.sun",
   "license": "ISC",
   "dependencies": {
     "react": "^15.1.0",
