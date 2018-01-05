@@ -22,7 +22,8 @@ http://www.ruanyifeng.com/blog/2017/04/css_in_js.html
 不能使用css预处理器sass,less,生态工具PostCss
 调试不方便，在 devtool 中修改只能修改当前的组件实例
 
-//CSS modules模块化
+//CSS modules模块化 
+css modules + postcss 基本解决类名冲突与浏览器兼容的问题
 http://www.ruanyifeng.com/blog/2016/06/css_modules.html
 解决的痛点
 1.全局命名空间
@@ -50,11 +51,3 @@ http://www.ruanyifeng.com/blog/2016/06/css_modules.html
 8.purecss精简css只能处理.html静态页面或单页app引用的css
 9.合并请求 淘宝
 10.Node.js安全问题https://www.csdn.net/article/2014-11-25/2822803-NODE
-
-
-//css modules Demo
-1.css编译: a.css 中导入base.css 编译后文件内容是什么 
-2.js编译：在js中如何引入或调用相关样式和组件 编译后css是否能够按需加载
-
-
-css modules + postcss 基本解决类名冲突与浏览器兼容的问题
